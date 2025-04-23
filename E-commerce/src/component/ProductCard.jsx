@@ -1,15 +1,16 @@
-import { useCart } from '../context/CartContext';
+import React from 'react';
+import '../styles/styles.css';
 
-const ProductCard = ({ product }) => {
-  const { addToCart } = useCart();
-
+const ProductCard = ({ product, onAddToCart }) => {
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.title} />
-      <h3>{product.title}</h3>
-      <p>${product.price}</p>
-      <button onClick={() => addToCart(product)}>Add to Cart</button>
+    <div className="border p-4 rounded-lg shadow-md product-card">
+      <img src={product.image} alt={product.title} className="mb-4" />
+      <h3 className="font-semibold">{product.title}</h3>
+      <p>{product.category}</p>
+      <p className="font-bold">Ksh{product.price}</p>
+      <button className="mt-4" onClick={() => onAddToCart(product)}>Add to Cart</button>
     </div>
   );
 };
+
 export default ProductCard;
